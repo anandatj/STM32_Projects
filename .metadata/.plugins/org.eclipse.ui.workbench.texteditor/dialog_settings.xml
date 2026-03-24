@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="false"/>
+	<list key="searchhistory">
+		<item value="GPIO"/>
+		<item value="repetition"/>
+		<item value="HAL_TIM_PWM_Start_IT"/>
+		<item value="gpio"/>
+		<item value="clock"/>
+		<item value="HAL_TIM_PER"/>
+		<item value="HAL_TIM_PWM_Start"/>
+		<item value="int_main"/>
+	</list>
+</section>

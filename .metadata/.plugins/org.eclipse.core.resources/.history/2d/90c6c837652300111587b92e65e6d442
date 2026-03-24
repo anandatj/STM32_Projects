@@ -1,0 +1,119 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include <math.h>
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+#define PI 3.14159265358979323846f
+#define DEG2RAD(deg) ((deg) * (PI / 180.0f))
+
+typedef struct {
+	float theta;
+	float freq; // Freq in Hz
+	float dt; // PWM Freq
+	float w; // Freq in Rad/s
+
+	float Va;
+	float Vb;
+	float Vc;
+
+	uint16_t PWM_A;
+	uint16_t PWM_B;
+	uint16_t PWM_C;
+} Freq_Param;
+
+Freq_Param Freq = {
+		.dt = 1/(20e3),
+		.freq = 2, // 50 Hz adjustable
+		.theta = 0.0, // 0 Rad initial
+		.w = 0.0,
+		.PWM_A = 0,
+		.PWM_B = 0,
+		.PWM_C = 0
+};
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim1;
+
+/* USER CODE BEGIN PV */
+
+
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+/* PWM Interrupt Callback */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	if (htim->Instance == TIM1)
+	    {
+		  Freq.w = 2*PI*Freq.freq;
+		  Freq.theta += Freq.w * Freq.dt/2;
+
+		  TIM1->CCR1 = Freq.PWM_A;
+		  TIM1->CCR2 = Freq.PWM_B;
+		  TIM1->CCR3 = Freq.PWM_C;
+	        // Your code to run on each period elapsed event (overflow/underflow)
+	        // In Mode 3, this happens twice per PWM period (at the top and bottom of the count)
+	        // You might use a state variable or the repetition counter (if available)
+	        // to handle events that should only happen once per cycle.
+	    }
+}
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+
+
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+
+/
