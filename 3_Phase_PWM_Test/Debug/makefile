@@ -60,8 +60,8 @@ all: main-build
 main-build: 3_Phase_PWM_Test.elf secondary-outputs
 
 # Tool invocations
-3_Phase_PWM_Test.elf 3_Phase_PWM_Test.map: $(OBJS) $(USER_OBJS) D:\00\ PhD\ Prep\STM32\Projects\3_Phase_PWM_Test\STM32F446ZETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "3_Phase_PWM_Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\00 PhD Prep\STM32\Projects\3_Phase_PWM_Test\STM32F446ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="3_Phase_PWM_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+3_Phase_PWM_Test.elf 3_Phase_PWM_Test.map: $(OBJS) $(USER_OBJS) D:\00\ PhD\ Prep\STM32\STM32_Projects\3_Phase_PWM_Test\STM32F446ZETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "3_Phase_PWM_Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\00 PhD Prep\STM32\STM32_Projects\3_Phase_PWM_Test\STM32F446ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="3_Phase_PWM_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
