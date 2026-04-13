@@ -31,11 +31,22 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdint.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+
+/**
+ * @brief  MISRA-C / AUTOSAR compliant fixed-width float type.
+ * @note   ARM CMSIS DSP defines float32_t in arm_math.h.  When CMSIS DSP is
+ *         not linked we provide the typedef here so the application can use a
+ *         width-explicit floating-point type throughout.
+ */
+#ifndef __FLOAT32_T_DEFINED
+#define __FLOAT32_T_DEFINED
+typedef float float32_t;
+#endif
 
 /* USER CODE END ET */
 
