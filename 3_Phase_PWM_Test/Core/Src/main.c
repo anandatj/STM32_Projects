@@ -111,8 +111,9 @@ void Calculate_Angle (void)
 
 	switch (Operation_Mode.PWM_MODE) {
 	case 1:
+    // 3rd Harmonic Injection (Geometric SVPWM)
 
-		// No Function Yet
+		
 	case 2:
 		// 3rd Harmonic Injection (MinMax Injection)
 		Freq.MinMax = 0.5f * (fmaxf(Freq.Va,fmaxf(Freq.Vb, Freq.Vc)) + fminf(Freq.Va, fminf(Freq.Vb, Freq.Vc)));
